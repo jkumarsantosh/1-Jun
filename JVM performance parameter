@@ -38,3 +38,4 @@ java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:ParallelGCThreads=20 -XX:+UseParNew
 
 java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:ParallelGCThreads=20 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 -jar -XX:MaxTenuringThreshold=31 FirstExample.jar
 
+java -XX:+UseG1GC -jar FirstExample.jar ////Java 9+
