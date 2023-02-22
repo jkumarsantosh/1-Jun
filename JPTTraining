@@ -1,0 +1,221 @@
+package com.bvr;
+public class DeadlockExample {  
+  public static void main(String[] args) {  
+    final String resource1 = "ratan Rao";  
+    final String resource2 = "vimal Rao";  
+    // t1 tries to lock resource1 then resource2  
+    Thread t1 = new Thread() {  
+      public void run() {  
+          synchronized (resource1) {  
+           System.out.println("Thread 1: locked resource 1");  
+  
+           try { Thread.sleep(100);} catch (Exception e) {}  
+  
+           synchronized (resource2) {  
+            System.out.println("Thread 1: locked resource 2");  
+           }  
+         }  
+      }  
+    };  
+  
+    // t2 tries to lock resource2 then resource1  
+    Thread t2 = new Thread() {  
+      public void run() {  
+        synchronized (resource2) {  
+          System.out.println("Thread 2: locked resource 2");  
+  
+          try { Thread.sleep(100);} catch (Exception e) {}  
+  
+          synchronized (resource1) {  
+            System.out.println("Thread 2: locked resource 1");  
+          }  
+        }  
+      }  
+    };  
+  
+      
+    t1.start();  
+    t2.start();  
+  }  
+}  
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          HEAP DUMP 
+
+
+
+
+cd CLASSROOM\JPT
+jmap -dump:format=b,file=./heapdump1.bin 11996
+ls
+dir
+jmap -heap 11996
+jmap -dump:live,file=./heapdump2.bin 11996
+dir
+jcmd
+jcmd 11996 GC.heap_dump ./heapdump.prof
+ls
+dir
+dir /a
+jcmd 11996 GC.heap_dump heapdump3.prof
+dir
+jcmd 11996 GC.heap_dump heapdump3.hprof
+dir
+jcmd 11996 GC.heap_dump c:\heapdump3.hprof
+jcmd 11996 GC.heap_dump c:\classroom\heapdump3.hprof
+jcmd 11996 GC.heap_dump c:\classroom\jpt\heapdump3.hprof
+dir
+cd ..
+cd REST
+cd ..
+cd JPT
+cd deployment
+ls
+dir
+java -XX:+HeapDumpOnOutOfMemoryError -jar FirstApplication-0.0.1-SNAPSHOT.jar
+java -XX:+HeapDumpOnOutOfMemoryError --XX:HeapDumpPath=c:\classroom\jpt -jar FirstApplication-0.0.1-SNAPSHOT.jar
+java -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=c:\classroom\jpt -jar FirstApplication-0.0.1-SNAPSHOT.jar
+doskey /history
+
+
+
+
+
+
+
+management.endpoints.enabled-by-default=true
+management.endpoint.info.enabled=true
+management.security.enabled=false
+
+management.endpoints.web.exposure.include=*
+
+
+
+
+
+
+
+
+THREAD DUMP
+
+
+jstack 4436 >> mydumps.tdump
+dir
+jcmd 4436 Thread.print
+doskey /history
+jps
+jmap -dump:file=c:\classroom\jpt\deployment\heapdump5.jmap 4436
+dir
+jhat heapdump5.jmap
+C:\SOFTWARES\hat_bin\bin\jhat heapdump5.jmap
+cd c:\SOFTWARES\hat_bin\bin
+jhat
+hat
+hat C:\CLASSROOM\JPT\deployment\heapdump5.jmap
+doskey /history
+
+
+
+
+
+
+
+
+https://api.themoviedb.org/3/movie/700?api_key=55fd3b2e904fd20e99f052117df1b859&language=en-US
+
+
+
+
+
+
+
+version : '3.1'
+
+services :
+  db :
+    image : mysql
+    command : --default-authentication-plugin=mysql_native_password
+    restart : always
+    ports :
+      - 3306:3306
+    environment :
+      MYSQL_ROOT_PASSWORD : example
+
+  adminer :
+    image : adminer 
+    restart : always
+    ports :
+      - 8080:8080
+
+
+
+
+
+
+
+
+docker-compose -f mysql.yml
+
+
+
+docker images
+   3 docker ps
+   4 docker network ls
+   5 docker network prune
+   6 docker network ls
+
+
+
+
+
+
+INSTALL MONGODB
+
+GO TO ROOT LOCATION OF MONGODB
+
+
+C:\Program Files\MongoDB\Server\6.0\bin
+
+
+CREATE ONE EMPTY FOLDER CALLED C:\MONGODB-FILES
+
+
+in cmd prompt
+
+mongod --dbpath c:\MONGODB-FILES
+
+
+Then 
+START MONGODB COMPASS UI
+
+
+
+
+IN BROWSER 
+
+
+http://localhost:8080/home
+
+ 
+
+
+
+Restfulservices
+
+ 
+
+Feedback Link : https://tcheck.co/HzV9k8
+
+ 
+
