@@ -1,0 +1,40 @@
+Garbage collector schemes 
+
+
+-XX:+UseParallelGC
+
+-XX:+UseConcMarkSweepGC
+
+-XX:+UseSerialGC
+
+
+-XX:+UseParallelOldGC
+
+-XX:+UseG1GC
+
+-XX:+UseParNewGC
+
+
+EXAMPLES
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads=20 -jar FirstExample.jar
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads=20 -XX:+UseParallelOldGC -jar FirstExample.jar
+
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads=20 -XX:+UseParallelOldGC -XX:LargePageSizeInBytes=256m -jar FirstExample.jar
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads=20 -XX:+UseParallelOldGC -XX:LargePageSizeInBytes=256m -XX:AggressiveOpts -jar FirstExample.jar
+
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:+UseParallelGC -XX:ParallelGCThreads=20 -XX:+UseParallelOldGC -XX:LargePageSizeInBytes=256m -XX:AggressiveOpts -XX:+UseBiasedLocking -jar FirstExample.jar
+
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:ParallelGCThreads=20 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:SurvivorRatio=8 -jar FirstExample.jar
+
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:ParallelGCThreads=20 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 -jar FirstExample.jar
+
+
+java -Xmx3800m -Xms3800m -Xmn2g -Xss128k -XX:ParallelGCThreads=20 -XX:+UseParNewGC -XX:+UseConcMarkSweepGC -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 -jar -XX:MaxTenuringThreshold=31 FirstExample.jar
+
